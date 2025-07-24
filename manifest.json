@@ -1,0 +1,30 @@
+{
+  "id": "tab-renammer",
+  "name": "Tab Renamer",
+  "version": "0.0.1",
+  "description": "Plugin used to rename automaticly tab in replay section",
+  "author": {
+    "name": "Serizao",
+    "email": "dev@caido.io",
+    "url": "https://github.com/serizao/tab-renammer"
+  },
+  "links": {},
+  "plugins": [
+    {
+      "id": "backend",
+      "kind": "backend",
+      "name": "backend",
+      "entrypoint": "backend/index.js",
+      "runtime": "javascript"
+    },
+    {
+      "id": "frontend",
+      "kind": "frontend",
+      "name": "frontend",
+      "entrypoint": "frontend/index.js",
+      "backend": {
+        "id": "backend"
+      }
+    }
+  ]
+}
