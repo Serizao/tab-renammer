@@ -12,7 +12,7 @@ export default defineConfig({
   id,
   name: "Tab Renamer",
   description: "Plugin used to rename automaticly tab in replay section",
-  version: "0.0.1",
+  version: "0.0.2",
   author: {
     name: "Serizao",
     email: "dev@caido.io",
