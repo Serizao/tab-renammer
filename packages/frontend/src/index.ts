@@ -104,7 +104,7 @@ export function init(sdk: CaidoSDK) {
   const configDiv = document.createElement("div");
   configDiv.style.backgroundColor = "#f8f8f8";
   configDiv.style.padding = "15px";
-  configDiv.style.style.color = "black";
+ 
   configDiv.style.borderRadius = "8px";
   configDiv.style.marginBottom = "20px";
   configDiv.innerHTML = `
