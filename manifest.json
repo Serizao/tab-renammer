@@ -1,7 +1,7 @@
 {
   "id": "tab-renammer",
   "name": "Tab Renamer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Plugin used to rename automaticly tab in replay section",
   "author": {
     "name": "Serizao",

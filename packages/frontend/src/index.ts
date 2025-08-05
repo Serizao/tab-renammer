@@ -473,8 +473,8 @@ return tabName;`;
       }
     });
 
-    return () => h('div', { class: 'p-5 font-sans', style: { backgroundColor: 'var(--p-surface-0)', color: 'var(--p-text-color)' } }, [
-      h('h1', { class: 'text-2xl font-bold mb-6', style: { color: 'var(--p-text-color)' } }, '🏷️ Replay Tab Auto-Renamer'),
+    return () => h('div', { class: 'p-5 font-sans', style: { backgroundColor: 'var(--p-surface-900)', color: 'var(--p-surface-0)' } }, [
+      h('h1', { class: 'text-2xl font-bold mb-6', style: { color: 'var(--p-surface-0)' } }, '🏷️ Replay Tab Auto-Renamer'),
       
       // Three column layout using flexbox
       h('div', { class: 'flex gap-6 mb-6' }, [
@@ -482,8 +482,9 @@ return tabName;`;
         h('div', { 
           class: 'flex-1 p-4 rounded-lg shadow-sm border',
           style: { 
-            backgroundColor: 'var(--p-highlight-background)',
-            borderColor: 'var(--p-content-border-color)'
+            backgroundColor: 'var(--p-surface-800)',
+            borderColor: 'var(--p-surface-700)',
+            color: 'var(--p-surface-0)'
           }
         }, [
           h('h3', { 
@@ -492,7 +493,7 @@ return tabName;`;
           }, '📊 Status'),
           h('div', { 
             class: 'space-y-2',
-            style: { color: 'var(--p-text-color)' }
+            style: { color: 'var(--p-surface-0)' }
           }, [
             h('p', `Active polling: ${isPolling.value ? 'Yes' : 'No'}`),
             h('p', `Sessions found: ${sessionsCount.value}`),
@@ -506,13 +507,14 @@ return tabName;`;
         h('div', { 
           class: 'flex-1 p-4 rounded-lg shadow-sm border',
           style: { 
-            backgroundColor: 'var(--p-surface-100)',
-            borderColor: 'var(--p-content-border-color)'
+            backgroundColor: 'var(--p-surface-800)',
+            borderColor: 'var(--p-surface-700)',
+            color: 'var(--p-surface-0)'
           }
         }, [
           h('h3', { 
             class: 'text-lg font-semibold mb-3',
-            style: { color: 'var(--p-text-color)' }
+            style: { color: 'var(--p-surface-0)' }
           }, '📝 Activity Logs'),
           h('div', {
             class: 'p-3 rounded border font-mono text-xs',
@@ -521,14 +523,14 @@ return tabName;`;
               height: '200px',
               overflowY: 'auto',
               scrollbarWidth: 'thin',
-              scrollbarColor: 'var(--p-surface-400) var(--p-surface-200)',
+              scrollbarColor: 'var(--p-surface-600) var(--p-surface-800)',
               backgroundColor: 'var(--p-surface-900)',
               color: 'var(--p-success-400)',
               borderColor: 'var(--p-surface-700)'
             }
           }, [
             activityLogs.value.length === 0 
-              ? h('div', { style: { color: 'var(--p-text-muted-color)', fontStyle: 'italic' } }, 'Waiting...')
+              ? h('div', { style: { color: 'var(--p-surface-400)', fontStyle: 'italic' } }, 'Waiting...')
               : activityLogs.value.map(log => h('div', { 
                 class: 'mb-1 break-words',
                 style: { color: 'var(--p-success-400)' }
@@ -540,8 +542,9 @@ return tabName;`;
         h('div', { 
           class: 'flex-1 p-4 rounded-lg shadow-sm border',
           style: { 
-            backgroundColor: 'var(--p-highlight-background)',
-            borderColor: 'var(--p-content-border-color)'
+            backgroundColor: 'var(--p-surface-800)',
+            borderColor: 'var(--p-surface-700)',
+            color: 'var(--p-surface-0)'
           }
         }, [
           h('h3', { 
@@ -552,11 +555,11 @@ return tabName;`;
             h('div', { class: 'flex items-center justify-between' }, [
               h('label', { 
                 class: 'text-sm font-medium',
-                style: { color: 'var(--p-text-color)' }
+                style: { color: 'var(--p-surface-0)' }
               }, 'Polling Interval:'),
               h('span', { 
                 class: 'text-sm',
-                style: { color: 'var(--p-text-muted-color)' }
+                style: { color: 'var(--p-surface-300)' }
               }, `${pollingInterval.value}ms`)
             ]),
             h('input', {
@@ -567,11 +570,11 @@ return tabName;`;
               value: pollingInterval.value,
               onChange: onPollingIntervalChange,
               class: 'w-full h-2 rounded-lg appearance-none cursor-pointer',
-              style: { backgroundColor: 'var(--p-surface-200)' }
+              style: { backgroundColor: 'var(--p-surface-600)' }
             }),
             h('div', { 
               class: 'flex justify-between text-xs',
-              style: { color: 'var(--p-text-muted-color)' }
+              style: { color: 'var(--p-surface-400)' }
             }, [
               h('span', '1s'),
               h('span', '5s'),
@@ -585,8 +588,9 @@ return tabName;`;
       h('div', { 
         class: 'mb-6 p-4 rounded-lg shadow-sm border',
         style: { 
-          backgroundColor: 'var(--p-highlight-background)',
-          borderColor: 'var(--p-content-border-color)'
+          backgroundColor: 'var(--p-surface-800)',
+          borderColor: 'var(--p-surface-700)',
+          color: 'var(--p-surface-0)'
         }
       }, [
         h('h3', { 
@@ -595,7 +599,7 @@ return tabName;`;
         }, '⚙️ Renaming Configuration'),
         h('p', { 
           class: 'mb-3',
-          style: { color: 'var(--p-text-color)' }
+          style: { color: 'var(--p-surface-0)' }
         }, 'Customize the tab name generation function:'),
         h('textarea', {
           value: namingFunction.value,
@@ -605,9 +609,9 @@ return tabName;`;
           class: 'w-full font-mono text-sm border rounded p-3',
           style: { 
             height: '200px',
-            backgroundColor: 'var(--p-surface-0)',
-            color: 'var(--p-text-color)',
-            borderColor: 'var(--p-content-border-color)'
+            backgroundColor: 'var(--p-surface-900)',
+            color: 'var(--p-surface-0)',
+            borderColor: 'var(--p-surface-600)'
           },
           placeholder: 'Enter custom naming function...'
         })
@@ -620,33 +624,39 @@ return tabName;`;
           class: 'px-4 py-2 rounded font-medium',
           style: {
             backgroundColor: isPolling.value ? 'var(--p-danger-color)' : 'var(--p-primary-color)',
-            color: 'var(--p-primary-contrast-color)'
+            color: 'var(--p-primary-contrast-color)',
+            border: 'none',
+            cursor: 'pointer'
           }
         }, isPolling.value ? 'Stop' : 'Start'),
         h('button', {
           onClick: onTestClick,
           class: 'px-4 py-2 rounded font-medium',
           style: {
-            backgroundColor: 'var(--p-surface-500)',
-            color: 'var(--p-surface-0)'
+            backgroundColor: 'var(--p-surface-600)',
+            color: 'var(--p-surface-0)',
+            border: 'none',
+            cursor: 'pointer'
           }
         }, 'Test'),
         h('button', {
           onClick: onResetClick,
           class: 'px-4 py-2 rounded border font-medium',
           style: {
-            borderColor: 'var(--p-content-border-color)',
-            color: 'var(--p-text-color)',
-            backgroundColor: 'transparent'
+            borderColor: 'var(--p-surface-600)',
+            color: 'var(--p-surface-0)',
+            backgroundColor: 'transparent',
+            cursor: 'pointer'
           }
         }, 'Reset Sessions'),
         h('button', {
           onClick: onToggleLogsClick,
           class: 'px-4 py-2 rounded border font-medium',
           style: {
-            borderColor: 'var(--p-content-border-color)',
-            color: 'var(--p-text-color)',
-            backgroundColor: 'transparent'
+            borderColor: 'var(--p-surface-600)',
+            color: 'var(--p-surface-0)',
+            backgroundColor: 'transparent',
+            cursor: 'pointer'
           }
         }, logsEnabled.value ? 'Hide Logs' : 'Show Logs')
       ]),
@@ -657,17 +667,20 @@ return tabName;`;
           onClick: onSaveFunctionClick,
           class: 'px-4 py-2 rounded font-medium',
           style: {
-            backgroundColor: 'var(--p-success-color)',
-            color: 'var(--p-surface-0)'
+            backgroundColor: 'var(--p-primary-700)',
+            color: 'var(--p-surface-0)',
+            border: 'none',
+            cursor: 'pointer'
           }
         }, 'Save Function'),
         h('button', {
           onClick: onResetFunctionClick,
           class: 'px-4 py-2 rounded border font-medium',
           style: {
-            borderColor: 'var(--p-content-border-color)',
-            color: 'var(--p-text-color)',
-            backgroundColor: 'transparent'
+            borderColor: 'var(--p-surface-600)',
+            color: 'var(--p-surface-0)',
+            backgroundColor: 'transparent',
+            cursor: 'pointer'
           }
         }, 'Default Function')
       ])
