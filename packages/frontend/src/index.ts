@@ -473,15 +473,27 @@ return tabName;`;
       }
     });
 
-    return () => h('div', { class: 'p-5 font-sans bg-white text-black' }, [
-      h('h1', { class: 'text-2xl font-bold mb-6 text-gray-800' }, '🏷️ Replay Tab Auto-Renamer'),
+    return () => h('div', { class: 'p-5 font-sans', style: { backgroundColor: 'var(--p-surface-0)', color: 'var(--p-text-color)' } }, [
+      h('h1', { class: 'text-2xl font-bold mb-6', style: { color: 'var(--p-text-color)' } }, '🏷️ Replay Tab Auto-Renamer'),
       
       // Three column layout using flexbox
       h('div', { class: 'flex gap-6 mb-6' }, [
         // Status Card (Left)
-        h('div', { class: 'flex-1 p-4 bg-blue-50 border border-blue-200 rounded-lg shadow-sm' }, [
-          h('h3', { class: 'text-lg font-semibold mb-3 text-blue-800' }, '📊 Status'),
-          h('div', { class: 'space-y-2 text-gray-700' }, [
+        h('div', { 
+          class: 'flex-1 p-4 rounded-lg shadow-sm border',
+          style: { 
+            backgroundColor: 'var(--p-highlight-background)',
+            borderColor: 'var(--p-content-border-color)'
+          }
+        }, [
+          h('h3', { 
+            class: 'text-lg font-semibold mb-3',
+            style: { color: 'var(--p-primary-color)' }
+          }, '📊 Status'),
+          h('div', { 
+            class: 'space-y-2',
+            style: { color: 'var(--p-text-color)' }
+          }, [
             h('p', `Active polling: ${isPolling.value ? 'Yes' : 'No'}`),
             h('p', `Sessions found: ${sessionsCount.value}`),
             h('p', `Known sessions: ${knownCount.value}`),
@@ -491,31 +503,61 @@ return tabName;`;
         ]),
         
         // Logs Card (Center)
-        h('div', { class: 'flex-1 p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm' }, [
-          h('h3', { class: 'text-lg font-semibold mb-3 text-gray-800' }, '📝 Activity Logs'),
+        h('div', { 
+          class: 'flex-1 p-4 rounded-lg shadow-sm border',
+          style: { 
+            backgroundColor: 'var(--p-surface-100)',
+            borderColor: 'var(--p-content-border-color)'
+          }
+        }, [
+          h('h3', { 
+            class: 'text-lg font-semibold mb-3',
+            style: { color: 'var(--p-text-color)' }
+          }, '📝 Activity Logs'),
           h('div', {
-            class: 'bg-gray-900 text-green-400 p-3 rounded border border-gray-700 font-mono text-xs',
+            class: 'p-3 rounded border font-mono text-xs',
             style: { 
               display: logsEnabled.value ? 'block' : 'none',
               height: '200px',
               overflowY: 'auto',
               scrollbarWidth: 'thin',
-              scrollbarColor: '#4B5563 #1F2937'
+              scrollbarColor: 'var(--p-surface-400) var(--p-surface-200)',
+              backgroundColor: 'var(--p-surface-900)',
+              color: 'var(--p-success-400)',
+              borderColor: 'var(--p-surface-700)'
             }
           }, [
             activityLogs.value.length === 0 
-              ? h('div', { class: 'text-gray-500 italic' }, 'Waiting...')
-              : activityLogs.value.map(log => h('div', { class: 'mb-1 text-green-400 break-words' }, log))
+              ? h('div', { style: { color: 'var(--p-text-muted-color)', fontStyle: 'italic' } }, 'Waiting...')
+              : activityLogs.value.map(log => h('div', { 
+                class: 'mb-1 break-words',
+                style: { color: 'var(--p-success-400)' }
+              }, log))
           ])
         ]),
         
         // Polling Configuration Card (Right)
-        h('div', { class: 'flex-1 p-4 bg-green-50 border border-green-200 rounded-lg shadow-sm' }, [
-          h('h3', { class: 'text-lg font-semibold mb-3 text-green-800' }, '⏱️ Polling Configuration'),
+        h('div', { 
+          class: 'flex-1 p-4 rounded-lg shadow-sm border',
+          style: { 
+            backgroundColor: 'var(--p-highlight-background)',
+            borderColor: 'var(--p-content-border-color)'
+          }
+        }, [
+          h('h3', { 
+            class: 'text-lg font-semibold mb-3',
+            style: { color: 'var(--p-success-color)' }
+          }, '⏱️ Polling Configuration'),
           h('div', { class: 'space-y-3' }, [
             h('div', { class: 'flex items-center justify-between' }, [
-              h('label', { class: 'text-sm font-medium text-gray-700' }, 'Polling Interval:'),
-              h('span', { class: 'text-sm text-gray-600' }, `${pollingInterval.value}ms`)
+              h('label', { 
+                class: 'text-sm font-medium',
+                style: { color: 'var(--p-text-color)' }
+              }, 'Polling Interval:'),
+              h('span', { 
+                class: 'text-sm',
+                style: { color: 'var(--p-text-muted-color)' }
+              }, `${pollingInterval.value}ms`)
             ]),
             h('input', {
               type: 'range',
@@ -524,9 +566,13 @@ return tabName;`;
               step: '500',
               value: pollingInterval.value,
               onChange: onPollingIntervalChange,
-              class: 'w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer'
+              class: 'w-full h-2 rounded-lg appearance-none cursor-pointer',
+              style: { backgroundColor: 'var(--p-surface-200)' }
             }),
-            h('div', { class: 'flex justify-between text-xs text-gray-500' }, [
+            h('div', { 
+              class: 'flex justify-between text-xs',
+              style: { color: 'var(--p-text-muted-color)' }
+            }, [
               h('span', '1s'),
               h('span', '5s'),
               h('span', '10s')
@@ -536,16 +582,33 @@ return tabName;`;
       ]),
       
       // Configuration Card (Full width)
-      h('div', { class: 'mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg shadow-sm' }, [
-        h('h3', { class: 'text-lg font-semibold mb-3 text-yellow-800' }, '⚙️ Renaming Configuration'),
-        h('p', { class: 'mb-3 text-gray-700' }, 'Customize the tab name generation function:'),
+      h('div', { 
+        class: 'mb-6 p-4 rounded-lg shadow-sm border',
+        style: { 
+          backgroundColor: 'var(--p-highlight-background)',
+          borderColor: 'var(--p-content-border-color)'
+        }
+      }, [
+        h('h3', { 
+          class: 'text-lg font-semibold mb-3',
+          style: { color: 'var(--p-secondary-color)' }
+        }, '⚙️ Renaming Configuration'),
+        h('p', { 
+          class: 'mb-3',
+          style: { color: 'var(--p-text-color)' }
+        }, 'Customize the tab name generation function:'),
         h('textarea', {
           value: namingFunction.value,
           onInput: (e: Event) => {
             namingFunction.value = (e.target as HTMLTextAreaElement).value;
           },
-          class: 'w-full font-mono text-sm border border-gray-300 rounded p-3 bg-white text-gray-800',
-          style: { height: '200px' },
+          class: 'w-full font-mono text-sm border rounded p-3',
+          style: { 
+            height: '200px',
+            backgroundColor: 'var(--p-surface-0)',
+            color: 'var(--p-text-color)',
+            borderColor: 'var(--p-content-border-color)'
+          },
           placeholder: 'Enter custom naming function...'
         })
       ]),
@@ -554,19 +617,37 @@ return tabName;`;
       h('div', { class: 'flex gap-3 mb-4' }, [
         h('button', {
           onClick: onStartClick,
-          class: `px-4 py-2 rounded font-medium ${isPolling.value ? 'bg-red-500 hover:bg-red-600 text-white' : 'bg-blue-500 hover:bg-blue-600 text-white'}`
+          class: 'px-4 py-2 rounded font-medium',
+          style: {
+            backgroundColor: isPolling.value ? 'var(--p-danger-color)' : 'var(--p-primary-color)',
+            color: 'var(--p-primary-contrast-color)'
+          }
         }, isPolling.value ? 'Stop' : 'Start'),
         h('button', {
           onClick: onTestClick,
-          class: 'px-4 py-2 rounded bg-gray-500 hover:bg-gray-600 text-white font-medium'
+          class: 'px-4 py-2 rounded font-medium',
+          style: {
+            backgroundColor: 'var(--p-surface-500)',
+            color: 'var(--p-surface-0)'
+          }
         }, 'Test'),
         h('button', {
           onClick: onResetClick,
-          class: 'px-4 py-2 rounded border border-gray-500 text-gray-700 hover:bg-gray-50 font-medium'
+          class: 'px-4 py-2 rounded border font-medium',
+          style: {
+            borderColor: 'var(--p-content-border-color)',
+            color: 'var(--p-text-color)',
+            backgroundColor: 'transparent'
+          }
         }, 'Reset Sessions'),
         h('button', {
           onClick: onToggleLogsClick,
-          class: 'px-4 py-2 rounded border border-gray-500 text-gray-700 hover:bg-gray-50 font-medium'
+          class: 'px-4 py-2 rounded border font-medium',
+          style: {
+            borderColor: 'var(--p-content-border-color)',
+            color: 'var(--p-text-color)',
+            backgroundColor: 'transparent'
+          }
         }, logsEnabled.value ? 'Hide Logs' : 'Show Logs')
       ]),
       
@@ -574,11 +655,20 @@ return tabName;`;
       h('div', { class: 'flex gap-3' }, [
         h('button', {
           onClick: onSaveFunctionClick,
-          class: 'px-4 py-2 rounded bg-green-500 hover:bg-green-600 text-white font-medium'
+          class: 'px-4 py-2 rounded font-medium',
+          style: {
+            backgroundColor: 'var(--p-success-color)',
+            color: 'var(--p-surface-0)'
+          }
         }, 'Save Function'),
         h('button', {
           onClick: onResetFunctionClick,
-          class: 'px-4 py-2 rounded border border-gray-500 text-gray-700 hover:bg-gray-50 font-medium'
+          class: 'px-4 py-2 rounded border font-medium',
+          style: {
+            borderColor: 'var(--p-content-border-color)',
+            color: 'var(--p-text-color)',
+            backgroundColor: 'transparent'
+          }
         }, 'Default Function')
       ])
     ]);
