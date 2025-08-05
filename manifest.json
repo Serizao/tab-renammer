@@ -11,20 +11,10 @@
   "links": {},
   "plugins": [
     {
-      "id": "backend",
-      "kind": "backend",
-      "name": "backend",
-      "entrypoint": "backend/index.js",
-      "runtime": "javascript"
-    },
-    {
       "id": "frontend",
       "kind": "frontend",
       "name": "frontend",
-      "entrypoint": "frontend/index.js",
-      "backend": {
-        "id": "backend"
-      }
+      "entrypoint": "frontend/index.js"
     }
   ]
 }

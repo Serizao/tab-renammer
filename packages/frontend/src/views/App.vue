@@ -3,17 +3,12 @@ import Button from "primevue/button";
 import InputText from "primevue/inputtext";
 import { ref } from "vue";
 
-import { useSDK } from "@/plugins/sdk";
-
-// Retrieve the SDK instance to interact with the backend
-const sdk = useSDK();
-
 const myVar = ref("Hello World");
 
-// Call the backend to generate a random string
+// Generate a random string
 const onGenerateClick = async () => {
-  const result = await sdk.backend.generateRandomString(10);
-  myVar.value = result;
+  const randomString = Math.random().toString(36).substring(2, 12);
+  myVar.value = randomString;
 };
 </script>
 

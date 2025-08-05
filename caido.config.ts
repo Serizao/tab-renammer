@@ -4,7 +4,6 @@ import tailwindcss from "tailwindcss";
 // @ts-expect-error no declared types at this time
 import tailwindPrimeui from "tailwindcss-primeui";
 import tailwindCaido from "@caido/tailwindcss";
-import path from "path";
 import prefixwrap from "postcss-prefixwrap";
 
 const id = "tab-renammer";
@@ -20,17 +19,9 @@ export default defineConfig({
   },
   plugins: [
     {
-      kind: "backend",
-      id: "backend",
-      root: "packages/backend",
-    },
-    {
       kind: 'frontend',
       id: "frontend",
       root: 'packages/frontend',
-      backend: {
-        id: "backend",
-      },
       vite: {
         plugins: [vue()],
         build: {
@@ -54,7 +45,7 @@ export default defineConfig({
           alias: [
             {
               find: "@",
-              replacement: path.resolve(__dirname, "packages/frontend/src"),
+              replacement: "./packages/frontend/src",
             },
           ],
         },
